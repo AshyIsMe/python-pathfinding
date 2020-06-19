@@ -46,7 +46,9 @@ class AStarFinder(Finder):
         (or return path if we found the end)
         """
         # pop node with minimum 'f' value
-        node = heapq.nsmallest(1, open_list)[0]
+        #node = heapq.nsmallest(1, open_list)[0]
+        # When n==1, min()/max() are more efficient: https://docs.python.org/3/library/heapq.html#heapq.nsmallest
+        node = min(open_list)
         open_list.remove(node)
         node.closed = True
 
